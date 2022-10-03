@@ -3,6 +3,7 @@ import './App.css';
 import City from './assets/city.jpg';
 import CarDetails from './components/CarDetails';
 import ConditionalRender from './components/ConditionalRender';
+import Container from './components/Container';
 import Fragments from './components/Fragments';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
@@ -39,6 +40,10 @@ function App() {
       {cars.map(({brand, color, km}) => (<CarDetails brand={brand} color={color} km={km}/>))}
       {/* fragment */}
       <Fragments/>
+      {/* children */}
+      <Container myValue={20}>
+        <p>E este é o conteúdo</p>
+      </Container>
     </div>
   );
 }
