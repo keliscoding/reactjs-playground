@@ -4,6 +4,7 @@ import City from './assets/city.jpg';
 import CarDetails from './components/CarDetails';
 import ConditionalRender from './components/ConditionalRender';
 import Container from './components/Container';
+import ExecuteFunction from './components/ExecuteFunction';
 import Fragments from './components/Fragments';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
@@ -16,6 +17,10 @@ function App() {
     {id: 2, brand: "KIA", color: "Vermelho", km: 2000},
     {id: 3, brand: "Citroen", color: "Prata", km: 10000},
   ];
+
+  function showMessage() {
+    console.log("Evento do componente pai")
+  }
 
   return (
     <div className='App'>
@@ -37,13 +42,15 @@ function App() {
       <CarDetails brand="Ford" color="Vermelha" km={0}/>
       <CarDetails brand="Fiat" color="Branco" km={4500}/>
       {/* loop em array de objetos */}
-      {cars.map(({brand, color, km}) => (<CarDetails brand={brand} color={color} km={km}/>))}
+      {cars.map(({brand, color, km, id}) => (<CarDetails key={id} brand={brand} color={color} km={km}/>))}
       {/* fragment */}
       <Fragments/>
       {/* children */}
       <Container myValue={20}>
         <p>E este é o conteúdo</p>
       </Container>
+      {/* funções como props */}
+      <ExecuteFunction showMessage={showMessage}/>
     </div>
   );
 }
