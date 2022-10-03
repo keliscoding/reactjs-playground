@@ -9,6 +9,8 @@ function App() {
       {/* CSS de componente */}
       <MyComponent/>
       <p>O estilo está vazando pra fora do componente</p>
+      {/* Inline Style, não é muito indicado pq zoa a manutenção */}
+      <p style={{color: "blue", fontWeight: "bold"}}>Aqui é inline</p>
     </div>
   );
 }
