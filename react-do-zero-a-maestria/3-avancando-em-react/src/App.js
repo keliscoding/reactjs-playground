@@ -8,6 +8,13 @@ import ManageData from './components/ManageData';
 import ShowUserName from './components/ShowUserName';
 
 function App() {
+
+  const cars = [
+    {id: 1, brand: "Ferrari", color: "Amarela", km: 0},
+    {id: 2, brand: "KIA", color: "Vermelho", km: 2000},
+    {id: 3, brand: "Citroen", color: "Prata", km: 10000},
+  ];
+
   return (
     <div className='App'>
       <h1>Seção 3</h1>
@@ -27,6 +34,8 @@ function App() {
       {/* reaproveitamento */}
       <CarDetails brand="Ford" color="Vermelha" km={0}/>
       <CarDetails brand="Fiat" color="Branco" km={4500}/>
+      {/* loop em array de objetos */}
+      {cars.map(({brand, color, km}) => (<CarDetails brand={brand} color={color} km={km}/>))}
     </div>
   );
 }
