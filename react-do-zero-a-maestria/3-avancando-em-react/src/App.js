@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import './App.css';
 
 import City from './assets/city.jpg';
 import CarDetails from './components/CarDetails';
+import ChangeMessageState from './components/ChangeMessageState';
 import ConditionalRender from './components/ConditionalRender';
 import Container from './components/Container';
 import ExecuteFunction from './components/ExecuteFunction';
 import Fragments from './components/Fragments';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
+import Message from './components/Message';
 import ShowUserName from './components/ShowUserName';
 
 function App() {
@@ -20,6 +23,12 @@ function App() {
 
   function showMessage() {
     console.log("Evento do componente pai")
+  }
+
+  const [message, setMessage] = useState("");
+
+  const handleMessage = (msg) => {
+    setMessage(msg);
   }
 
   return (
@@ -51,6 +60,9 @@ function App() {
       </Container>
       {/* funções como props */}
       <ExecuteFunction showMessage={showMessage}/>
+      {/* state lifting */}
+      <Message msg={message}/>
+      <ChangeMessageState handleMessage={handleMessage}/>
     </div>
   );
 }
