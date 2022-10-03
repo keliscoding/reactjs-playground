@@ -3,6 +3,7 @@ import './App.css';
 import City from './assets/city.jpg';
 import CarDetails from './components/CarDetails';
 import ConditionalRender from './components/ConditionalRender';
+import Fragments from './components/Fragments';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
 import ShowUserName from './components/ShowUserName';
@@ -36,6 +37,8 @@ function App() {
       <CarDetails brand="Fiat" color="Branco" km={4500}/>
       {/* loop em array de objetos */}
       {cars.map(({brand, color, km}) => (<CarDetails brand={brand} color={color} km={km}/>))}
+      {/* fragment */}
+      <Fragments/>
     </div>
   );
 }
