@@ -23,7 +23,10 @@ function App() {
       <ListRender/>
       <ConditionalRender/>
       <ShowUserName username="Zam0k" name="Castelo"/>
-      <CarDetails brand="Gol" km={10000} color="Blue"/>
+      <CarDetails brand="VW" km={10000} color="Blue"/>
+      {/* reaproveitamento */}
+      <CarDetails brand="Ford" color="Vermelha" km={0}/>
+      <CarDetails brand="Fiat" color="Branco" km={4500}/>
     </div>
   );
 }
