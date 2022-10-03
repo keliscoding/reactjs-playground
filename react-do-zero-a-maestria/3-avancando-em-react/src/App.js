@@ -1,6 +1,7 @@
 import './App.css';
 
 import City from './assets/city.jpg';
+import CarDetails from './components/CarDetails';
 import ConditionalRender from './components/ConditionalRender';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
@@ -21,7 +22,8 @@ function App() {
       <ManageData/>
       <ListRender/>
       <ConditionalRender/>
-      <ShowUserName username="Zam0k"/>
+      <ShowUserName username="Zam0k" name="Castelo"/>
+      <CarDetails brand="Gol" km={10000} color="Blue"/>
     </div>
   );
 }

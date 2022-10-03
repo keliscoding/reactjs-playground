@@ -1,9 +1,10 @@
 import React from 'react'
 
-const ShowUserName = (props) => {
+const ShowUserName = ({username, name}) => {
   return (
     <div>
-        <h2>O nome do usuário é: {props.username}</h2>
+        <h2>O nome do usuário é: {username}</h2>
+        <p>O nome real é: {name}</p>
     </div>
   )
 }
