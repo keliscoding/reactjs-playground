@@ -18,6 +18,8 @@ function App() {
       {/* Inline Style dinâmico */}
       <p style={toggle ? ({color: "red"}) : ({color: "blue"})}>Esse aqui é inline dinâmico</p>
       <button onClick={() => setToggle(!toggle)}>Clique para mudar a cor</button>
+      {/* Classes dinâmicas no CSS */}
+      <h2 className={ toggle ? "red-title" : "title"}>Este título vai ter classe dinâmica</h2>
     </div>
   );
 }
