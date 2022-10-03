@@ -1,10 +1,11 @@
 import './App.css';
 
 import City from './assets/city.jpg';
+import ManageData from './components/ManageData';
 
 function App() {
   return (
-    <div>
+    <div className='App'>
       <h1>Seção 3</h1>
       {/* Imagem em public */}
       <div>
@@ -14,6 +15,7 @@ function App() {
       <div>
         <img src={City} alt="Cidade" />
       </div>
+      <ManageData/>
     </div>
   );
 }
