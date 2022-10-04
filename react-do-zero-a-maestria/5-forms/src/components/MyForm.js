@@ -8,6 +8,8 @@ const MyForm = ({user}) => {
     const [name, setName] = useState(user ? user.name : '')
     const [email, setEmail] = useState(user ? user.email : '')
 
+    const [bio, setBio] = useState("")
+
     //isso aqui não é a maneira mais adequada de lidar com evento em formulario
     const handleChange = (e) => {
         setName(e.target.value);
@@ -25,6 +27,7 @@ const MyForm = ({user}) => {
         // 7 - limpando o output
         setName("");
         setEmail("");
+        setBio("");
     }
 
   return (
@@ -44,6 +47,12 @@ const MyForm = ({user}) => {
                 {/* 4 - simplificação da manipulação de state */}
                 <input type="email" name="email" placeholder='Digite o seu e-mail' onChange={(e) => setEmail(e.target.value)} value={email}/>
             </label>
+            {/* 8 - text area */}
+            <label>
+                <span>Bio:</span>
+                <textarea name="Bio" placeholder='Descrição do usuário' onChange={(e) => setBio(e.target.value)} value={bio}></textarea>
+            </label>
+
             <input type="submit" value="Enviar"/>
         </form>
     </div>
