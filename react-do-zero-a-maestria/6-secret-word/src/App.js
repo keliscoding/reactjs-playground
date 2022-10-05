@@ -1,7 +1,7 @@
 //CSS
 import './App.css';
 // React
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 //data
 
@@ -34,7 +34,7 @@ function App() {
   const [guesses, setGuesses] = useState(guessesQty);
   const [score, setScore] = useState(0);
 
-  const pickWordAndCategory = () => {
+  const pickWordAndCategory = useCallback(() => {
     //pick a random category
     const categories = Object.keys(words)
     const category = categories[Math.floor(Math.random() * Object.keys(categories).length)];
@@ -43,10 +43,13 @@ function App() {
     const word = words[category][Math.floor(Math.random() * words[category].length)]
 
     return {word, category}
-  }
+  },[words]);
 
+  
   //starts the secret word game
-  const startGame = () => {
+  const startGame = useCallback(() => {
+    //clear all letters
+    setGuessedLetters([]);
 
     //pick word and pick category
     const {word, category} = pickWordAndCategory();
@@ -63,7 +66,7 @@ function App() {
     setLetters(wordLetters);
 
     setGameStage(stages[1].name);
-  }
+  }, [pickWordAndCategory]);
 
   // process the letter input
   const verifyLetter = (letter) => {
@@ -92,7 +95,6 @@ function App() {
       setGuesses((actualGuesses) => actualGuesses - 1);
     }
 
-
   };
 
   const clearLetterStates = () => {
@@ -100,6 +102,22 @@ function App() {
     setWrongLetters([]);
   }
 
+  //check win condional
+  useEffect(() => {
+
+    const uniqueLetters = [...new Set(letters)] //array de letras unicas
+
+    //win conditional
+    if(guessedLetters.length === uniqueLetters.length) {
+      //add score
+      setScore((actualScore) => actualScore += 100);
+
+      //restart game with new word
+      startGame();
+    }
+  }, [guessedLetters, letters, startGame])
+
+  //check if game ended
   useEffect(() => {
     if(guesses <= 0) {
       //reset all stages
