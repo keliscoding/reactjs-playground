@@ -46,7 +46,7 @@ function App() {
 
     //create an array of letters
 
-    const wordLetters = word.split("");
+    let wordLetters = word.split("");
 
     wordLetters = wordLetters.map(l => l.toLowerCase());
 
