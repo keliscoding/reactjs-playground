@@ -34,6 +34,16 @@
       "name": "cadeira",
       "price": "260",
       "id": 7
+    },
+    {
+      "name": "a",
+      "price": "a",
+      "id": 8
+    },
+    {
+      "name": "a",
+      "price": "a",
+      "id": 9
     }
   ]
 }
