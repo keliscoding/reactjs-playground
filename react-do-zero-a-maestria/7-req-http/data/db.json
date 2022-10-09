@@ -21,11 +21,6 @@
       "id": 4
     },
     {
-      "name": "a",
-      "price": "a",
-      "id": 5
-    },
-    {
       "name": "teclado",
       "price": "110",
       "id": 6
@@ -41,114 +36,9 @@
       "id": 8
     },
     {
-      "name": "a",
-      "price": "a",
-      "id": 9
-    },
-    {
-      "name": "a",
-      "price": "a",
-      "id": 10
-    },
-    {
-      "name": "a",
-      "price": "a",
-      "id": 11
-    },
-    {
-      "name": "a",
-      "price": "a",
-      "id": 12
-    },
-    {
-      "name": "a",
-      "price": "a",
-      "id": 13
-    },
-    {
-      "name": "a",
-      "price": "a",
-      "id": 14
-    },
-    {
       "name": "b",
       "price": "b",
       "id": 15
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 16
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 17
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 18
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 19
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 20
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 21
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 22
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 23
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 24
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 25
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 26
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 27
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 28
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 29
-    },
-    {
-      "name": "b",
-      "price": "b",
-      "id": 30
     }
   ]
 }
