@@ -6,11 +6,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 //pages
+import SearchForm from './components/SearchForm';
 import About from './pages/About';
 import Home from './pages/Home';
 import Info from './pages/Info';
 import NotFound from './pages/NotFound';
 import Product from './pages/Product';
+import Search from './Search';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
       {/* o que está fora do browserrouter vai ser repetido em todas as paginas */}
       <BrowserRouter>
       <Navbar/>
+      {/* 9 - Search Params */}
+      <SearchForm/>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/about" element={<About/>}/>
@@ -26,6 +30,8 @@ function App() {
           <Route path="/products/:id" element={<Product />}/>
           {/* 6 - nested route */}
           <Route path="/products/:id/info" element={<Info />}/>
+          {/* 9 - search */}
+          <Route path='/search' element={<Search/>}/>
           {/* 7 - no match route */}
           <Route path="*" element={<NotFound/>}/>
         </Routes>
