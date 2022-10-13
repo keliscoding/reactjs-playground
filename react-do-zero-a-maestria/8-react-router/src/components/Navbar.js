@@ -1,15 +1,16 @@
 import "./Navbar.css";
 
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 function Navbar() {
   return (
     <nav>
         {/* não se usa tag a no react */}
-        <Link to="/">Home</Link>
-        <Link to="/about">Sobre</Link>
+        {/* Link ativo */}
+        <NavLink to="/" className={({isActive}) => (isActive ? 'esta-ativo' : 'nao-ativo')} end>Home</NavLink>
+        <NavLink to="/about">Sobre</NavLink>
     </nav>
   )
 }
