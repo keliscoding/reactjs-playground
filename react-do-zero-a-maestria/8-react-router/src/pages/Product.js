@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
+import Info from './Info';
 
 function Product() {
     //4 - rota dinamica
@@ -17,10 +18,13 @@ function Product() {
     <>
         {error && <p>{error}</p>}
         {loading && <p>loading....</p>}
-        {!loading && <div>
+        {data && (
+        <div>
             <h2>{data.name}</h2>
             <p>price: R$ {data.price},00</p>
-            </div>}
+            {/* 6 - nested routes */}
+            <Link to={`/products/${id}/info`} element={Info}>Mais informações...</Link>
+        </div>)}
     </>
   )
 }
