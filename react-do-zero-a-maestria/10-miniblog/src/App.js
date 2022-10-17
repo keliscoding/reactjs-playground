@@ -17,6 +17,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Search from './pages/Search/Search';
 
 const App = () => {
 
@@ -50,6 +51,9 @@ const App = () => {
               <Route 
                 path="/about" 
                 element={<About />} />
+              <Route 
+                path="/search" 
+                element={<Search />} />
               <Route 
                 path="/login" 
                 element={!user ? <Login /> : <Navigate to="/"/>} />
