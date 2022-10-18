@@ -18,6 +18,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Search from './pages/Search/Search';
+import Post from './pages/Post/Post';
 
 const App = () => {
 
@@ -54,6 +55,9 @@ const App = () => {
               <Route 
                 path="/search" 
                 element={<Search />} />
+              <Route 
+                path="/posts/:id" 
+                element={<Post />} />
               <Route 
                 path="/login" 
                 element={!user ? <Login /> : <Navigate to="/"/>} />
