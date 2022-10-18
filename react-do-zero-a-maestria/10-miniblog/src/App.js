@@ -19,6 +19,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Search from './pages/Search/Search';
 import Post from './pages/Post/Post';
+import EditPost from './pages/EditPost/EditPost';
 
 const App = () => {
 
@@ -70,6 +71,9 @@ const App = () => {
               <Route 
                 path="/posts/create" 
                 element={user ? <CreatePost /> : <Navigate to="/login"/>} />
+              <Route 
+                path="/posts/edit/:id" 
+                element={user ? <EditPost /> : <Navigate to="/login"/>} />
             </Routes>
           </div>
           <Footer/>
