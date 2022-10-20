@@ -1,14 +1,16 @@
-import React from 'react'
-import HookUseReducer from '../components/HookUseReducer'
-import HookUseState from '../components/HookUseState'
+import React from "react";
+import HookUseEffect from "../components/HookUseEffect";
+import HookUseReducer from "../components/HookUseReducer";
+import HookUseState from "../components/HookUseState";
 
 const Home = () => {
   return (
     <div>
-        <HookUseState/>
-        <HookUseReducer/>
+      <HookUseState />
+      <HookUseReducer />
+      <HookUseEffect />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
