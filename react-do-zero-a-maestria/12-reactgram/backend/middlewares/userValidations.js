@@ -16,10 +16,10 @@ const userCreateValidation = () => {
       .isString()
       .withMessage("A senha é obrigatória")
       .isLength({ min: 5 })
-      .withMessage("O senha precisa ter no mínimo 5 caracteres"),
+      .withMessage("O senha precisa ter no mínimo 5 caracteres."),
     body("confirmpassword")
       .isString()
-      .withMessage("A confirmação de senha é obrigatória")
+      .withMessage("A confirmação de senha é obrigatória.")
       .custom((value, { req }) => {
         if (value !== req.body.password) {
           throw new Error("As senhas não são iguais.");
@@ -29,6 +29,15 @@ const userCreateValidation = () => {
   ];
 };
 
+const loginValidation = () => {
+  return [
+    body("email").isString().withMessage("O email é obrigatório.")
+      .isEmail().withMessage("Insira um email válido."),
+    body("password").isString().withMessage("A senha é obrigatória")
+  ]
+}
+
 module.exports = {
   userCreateValidation,
+  loginValidation
 };
