@@ -83,7 +83,9 @@ const getAllPhotos = async (req, res) => {
 const getUserPhotos = async (req, res) => {
   const { id } = req.params;
 
-  const photos = await Photo.find({ userId: id }).sort([["createdAt", -1]]).exec();
+  const photos = await Photo.find({ userId: id })
+    .sort([["createdAt", -1]])
+    .exec();
 
   return res.status(200).json(photos);
 };
@@ -91,48 +93,72 @@ const getUserPhotos = async (req, res) => {
 //get photo by id
 
 const getPhotoById = async (req, res) => {
-    const { id } = req.params;
+  const { id } = req.params;
 
-    const photo = await Photo.findById(mongoose.Types.ObjectId(id))
+  const photo = await Photo.findById(mongoose.Types.ObjectId(id));
 
-    //check if photo exists
-    if(!photo) {
-        return res.status(404).json({
-            errors: ["Foto não encontrada!"],
-          });
-    }
+  //check if photo exists
+  if (!photo) {
+    return res.status(404).json({
+      errors: ["Foto não encontrada!"],
+    });
+  }
 
-    return res.status(200).json(photo);
-}
+  return res.status(200).json(photo);
+};
 
 // update photo
 
 const updatePhoto = async (req, res) => {
-    const { id } = req.params;
-    const { title } = req.body;
-    const reqUser = req.user;
-    const photo = await Photo.findById(id);
+  const { id } = req.params;
+  const { title } = req.body;
+  const reqUser = req.user;
+  const photo = await Photo.findById(id);
 
-    //check if photo exists
-    if(!photo){
-        return res.status(404).json({errors: ["Foto não encontrada!"]})
-    }
+  //check if photo exists
+  if (!photo) {
+    return res.status(404).json({ errors: ["Foto não encontrada!"] });
+  }
 
-    //check if photo belongs to user
-    if(!photo.userId.equals(reqUser._id)) {
-        return res.status(422).json({errors: ["Ocorreu um erro, por favor tente novamente mais tarde."]});
-    }
+  //check if photo belongs to user
+  if (!photo.userId.equals(reqUser._id)) {
+    return res.status(422).json({
+      errors: ["Ocorreu um erro, por favor tente novamente mais tarde."],
+    });
+  }
 
-    if(title) {
-        photo.title = title;
-    }
+  if (title) {
+    photo.title = title;
+  }
 
-    await photo.save();
+  await photo.save();
 
-    return res.status(200).json({
-        photo,
-        message: "Foto atualizada com sucesso!"
-    })
+  return res.status(200).json({
+    photo,
+    message: "Foto atualizada com sucesso!",
+  });
+};
+
+// like functionality
+const likePhoto = async (req, res) => {
+  const { id } = req.params;
+  const reqUser = req.user;
+  const photo = await Photo.findById(id);
+
+  //check if photo exists
+  if (!photo) {
+    return res.status(404).json({ errors: ["Foto não encontrada!"] });
+  }
+
+  //check if user already liked the photo
+  if(photo.likes.includes(reqUser._id)) {
+    return res.status(422).json({errors: ["Você já curtiu a foto."]});
+  }
+
+  // put user id into likes array
+  photo.likes.push(reqUser._id)
+  photo.save()
+  return res.status(200).json({photoId: id, userId: reqUser._id, message: "A foto foi curtida."});
 };
 
 module.exports = {
@@ -141,5 +167,6 @@ module.exports = {
   getAllPhotos,
   getUserPhotos,
   getPhotoById,
-  updatePhoto
+  updatePhoto,
+  likePhoto
 };
