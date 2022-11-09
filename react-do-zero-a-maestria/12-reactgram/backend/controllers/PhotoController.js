@@ -151,14 +151,52 @@ const likePhoto = async (req, res) => {
   }
 
   //check if user already liked the photo
-  if(photo.likes.includes(reqUser._id)) {
-    return res.status(422).json({errors: ["Você já curtiu a foto."]});
+  if (photo.likes.includes(reqUser._id)) {
+    return res.status(422).json({ errors: ["Você já curtiu a foto."] });
   }
 
   // put user id into likes array
-  photo.likes.push(reqUser._id)
-  photo.save()
-  return res.status(200).json({photoId: id, userId: reqUser._id, message: "A foto foi curtida."});
+  photo.likes.push(reqUser._id);
+  photo.save();
+  return res
+    .status(200)
+    .json({ photoId: id, userId: reqUser._id, message: "A foto foi curtida." });
+};
+
+// Comment functionality
+const commentPhoto = async (req, res) => {
+  const { id } = req.params;
+  const { comment } = req.body;
+
+  const reqUser = req.user;
+
+  const user = await User.findById(reqUser._id);
+
+  const photo = await Photo.findById(id);
+
+  //check if photo exists
+  if (!photo) {
+    return res.status(404).json({ errors: ["Foto não encontrada!"] });
+  }
+
+  //Put comment in the array comments
+  const userComment = {
+    comment,
+    userName: user.name,
+    userImage: user.profileImage,
+    userId: user._id,
+  };
+
+  photo.comments.push(userComment);
+
+  await photo.save();
+
+  return res
+    .status(200)
+    .json({
+      comment: userComment,
+      message: "O comentário foi adicionado com sucesso!",
+    });
 };
 
 module.exports = {
@@ -168,5 +206,6 @@ module.exports = {
   getUserPhotos,
   getPhotoById,
   updatePhoto,
-  likePhoto
+  likePhoto,
+  commentPhoto,
 };
