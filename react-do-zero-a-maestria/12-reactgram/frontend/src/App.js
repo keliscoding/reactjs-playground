@@ -15,6 +15,7 @@ import EditProfile from "./pages/EditProfile/EditProfile";
 //Components
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import Profile from "./pages/Profile/Profile";
 
 const App = () => {
   const { auth, loading } = useAuth();
@@ -36,6 +37,10 @@ const App = () => {
             <Route
               path="/profile"
               element={auth ? <EditProfile /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/users/:id"
+              element={auth ? <Profile /> : <Navigate to="/login" />}
             />
             <Route
               path="/login"
