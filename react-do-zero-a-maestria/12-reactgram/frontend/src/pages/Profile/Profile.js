@@ -113,6 +113,7 @@ const Profile = () => {
           </div>
           {errorPhoto && <Message msg={errorPhoto} type="error" />}
           {messagePhoto && <Message msg={messagePhoto} type="success" />}
+          
         </>
       )}
     </div>
