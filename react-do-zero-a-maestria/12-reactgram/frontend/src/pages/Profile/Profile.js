@@ -14,7 +14,11 @@ import { useParams } from "react-router-dom";
 
 // redux
 import { getUserDetails } from "../../slices/userSlice";
-import { publishPhoto, resetMessage, getUserPhotos } from "../../slices/photoSlice";
+import {
+  publishPhoto,
+  resetMessage,
+  getUserPhotos,
+} from "../../slices/photoSlice";
 
 const Profile = () => {
   const { id } = useParams();
@@ -114,20 +118,35 @@ const Profile = () => {
           </div>
           {errorPhoto && <Message msg={errorPhoto} type="error" />}
           {messagePhoto && <Message msg={messagePhoto} type="success" />}
-
         </>
       )}
       <div className="user-photos">
         <h2>Fotos publicadas:</h2>
         <div className="photos-container">
-          {photos && photos.map((photo) => (
-            <div className="photo" key={photo._id}>
-              {photo.image && (
-                <img src={`${uploads}/photos/${photo.image}`} alt={photo.title}/>
+          {photos &&
+            photos.map((photo) => (
+              <div className="photo" key={photo._id}>
+                {photo.image && (
+                  <img
+                    src={`${uploads}/photos/${photo.image}`}
+                    alt={photo.title}
+                  />
                 )}
-                {id === userAuth._id ? (<p>actions</p>) : (<Link className="btn" to={`/photo/${photo._id}`}>Ver</Link>)}
-            </div>
-          ))}
+                {id === userAuth._id ? (
+                  <div className="actions">
+                    <Link to={`/photo/${photo._id}`}>
+                      <BsFillEyeFill/>
+                    </Link>
+                    <BsPencilFill/>
+                    <BsXLg/>
+                  </div>
+                ) : (
+                  <Link className="btn" to={`/photo/${photo._id}`}>
+                    Ver
+                  </Link>
+                )}
+              </div>
+            ))}
           {photos.length === 0 && <p>Ainda não há fotos publicadas.</p>}
         </div>
       </div>
