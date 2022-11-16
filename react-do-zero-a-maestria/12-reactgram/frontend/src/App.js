@@ -16,6 +16,7 @@ import EditProfile from "./pages/EditProfile/EditProfile";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Profile from "./pages/Profile/Profile";
+import Photo from "./pages/Photo/Photo";
 
 const App = () => {
   const { auth, loading } = useAuth();
@@ -49,6 +50,10 @@ const App = () => {
             <Route
               path="/register"
               element={!auth ? <Register /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/photos/:id"
+              element={auth ? <Photo /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>

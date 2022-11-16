@@ -201,14 +201,14 @@ const Profile = () => {
                 )}
                 {id === userAuth._id ? (
                   <div className="actions">
-                    <Link to={`/photo/${photo._id}`}>
+                    <Link to={`/photos/${photo._id}`}>
                       <BsFillEyeFill />
                     </Link>
                     <BsPencilFill onClick={() => handleEdit(photo)}/>
                     <BsXLg onClick={() => handleDelete(photo._id)} />
                   </div>
                 ) : (
-                  <Link className="btn" to={`/photo/${photo._id}`}>
+                  <Link className="btn" to={`/photos/${photo._id}`}>
                     Ver
                   </Link>
                 )}
